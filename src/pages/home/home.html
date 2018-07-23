@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="light">
     <ion-title>
       Newspapers
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addNewspaper()" color="dark">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="background">
+
+  <ion-card class="no-newspapers">
+    <ion-card-content>
+      <i class="fa fa-newspaper-o newspaper-icon" aria-hidden="true"></i>
+      <div>No Newspapers Saved</div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card (click)="addNewspaper()" class="add-newspaper">
+    <ion-icon class="add-newspaper-icon add-newspaper-color" name="add-circle-outline"></ion-icon>
+    <div class="add-newspaper-color">Add Newspaper</div>
+  </ion-card>
+
 </ion-content>
