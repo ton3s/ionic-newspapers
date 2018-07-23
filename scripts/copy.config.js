@@ -21,5 +21,9 @@ module.exports = {
   copySwToolbox: {
     src: ['{{ROOT}}/node_modules/sw-toolbox/sw-toolbox.js'],
     dest: '{{BUILD}}'
+  },
+  copyWebSocialShare: {
+    src: ['{{ROOT}}/node_modules/web-social-share/dist/websocialshare**/*'],
+    dest: '{{BUILD}}'
   }
 }

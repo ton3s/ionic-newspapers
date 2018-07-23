@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {DataProvider} from "../../providers/data/data.provider";
+import {INewspaper} from "../../providers/data/data.interface";
 
 @Component({
   selector: 'page-home',
@@ -7,8 +9,18 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  newspapers: INewspaper[];
 
+  constructor(public navCtrl: NavController,
+              public dataProvider: DataProvider) {
+  }
+
+  ionViewDidLoad() {
+    this.dataProvider.getNewspapers()
+      .then(newspapers => {
+        console.log(newspapers);
+        this.newspapers = newspapers
+      });
   }
 
 }

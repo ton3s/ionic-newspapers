@@ -36,3 +36,4 @@ UserInterfaceState.xcuserstate
 
 src/app/firebase.config.ts
 src/assets/lib/gsap/
+src/assets/data/newspapers.txt
