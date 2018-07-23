@@ -1,3 +1,36 @@
 page-search {
 
+  .background {
+    background: linear-gradient(to right, #4e54c8 , #8f94fb);
+  }
+
+  .search-bar {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  .no-newspapers {
+    text-align: center;
+    font-size: 12px;
+    padding: 7px;
+  }
+
+  .newspaper-icon {
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+
+  .newspaper-name {
+    font-size: 14px;
+  }
+
+  .newspaper-country {
+    font-size: 10px;
+    font-style: italic;
+    color: #404040;
+  }
+
+  .item {
+    min-height: 0;
+  }
 }

@@ -31,7 +31,7 @@ export class HomePage {
         },{
           text: 'Search',
           handler: () => {
-            console.log('Search clicked');
+            this.search();
           }
         },{
           text: 'Cancel',
@@ -50,7 +50,7 @@ export class HomePage {
   }
 
   search() {
-
+    this.navCtrl.push('SearchPage' );
   }
 
   loadNewspapers() {

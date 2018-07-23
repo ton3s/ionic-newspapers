@@ -1,9 +1,31 @@
-
 <ion-header>
   <ion-navbar color="light">
     <ion-title>Search</ion-title>
   </ion-navbar>
+  <ion-searchbar class="search-bar" [(ngModel)]="searchTerm"
+                 [debounce]="500"
+                 (ionCancel)="setFilteredItems()"
+                 (ionInput)="setFilteredItems()"></ion-searchbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="background">
+
+  <ion-list *ngIf="newspapers.length > 0">
+    <ion-card *ngFor="let newspaper of newspapers; let i = index;" class="animated fadeInUp">
+      <ion-item text-wrap>
+        <div class="newspaper-name">{{ newspaper.name }}</div>
+      </ion-item>
+      <ion-item text-wrap>
+        <div class="newspaper-country" item-right>{{ newspaper.region }}, {{ newspaper.country }}</div>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+  <ion-card *ngIf="newspapers.length === 0" class="no-newspapers animated flipInX">
+    <ion-card-content>
+      <i class="fa fa-newspaper-o newspaper-icon" aria-hidden="true"></i>
+      <div>{{ searchMessage }}</div>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
