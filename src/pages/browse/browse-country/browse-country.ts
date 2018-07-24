@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the BrowseCountryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {TabsPage} from "../../tabs/tabs";
+import {DataProvider} from "../../../providers/data/data.provider";
 
 @IonicPage()
 @Component({
@@ -15,11 +10,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BrowseCountryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  region: string;
+  countries: string[];
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public dataProvider: DataProvider) {
+
+    this.region = this.navParams.get('region');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BrowseCountryPage');
+    if (!this.navCtrl.canGoBack()) this.backToHomePage();
+    this.dataProvider.getCountriesForRegion(this.region).then(countries => this.countries = countries);
+  }
+
+  onCountry(country) {
+    this.navCtrl.push('BrowseNewspapersPage', {country});
+  }
+
+  backToHomePage() {
+    this.navCtrl.setRoot(TabsPage).then(() => this.navCtrl.popToRoot());
   }
 
 }
