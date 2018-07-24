@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActionSheetController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {INewspaper} from "../../providers/data/data.interface";
 import {DataProvider} from "../../providers/data/data.provider";
@@ -63,7 +63,7 @@ export class SearchPage {
             this.favoritesProvider.saveFavorite(newspaper)
               .then(_ => this.utilityProvider.presentToast("Saved Newspaper"))
           }
-        },{
+        }, {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {

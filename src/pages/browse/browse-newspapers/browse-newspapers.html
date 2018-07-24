@@ -1,18 +1,28 @@
-<!--
-  Generated template for the BrowseNewspapersPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>BrowseNewspapers</ion-title>
+  <ion-navbar color="light">
+    <ion-title>Search</ion-title>
   </ion-navbar>
-
+  <ion-searchbar class="search-bar" [(ngModel)]="searchTerm"
+                 [debounce]="500"
+                 (ionCancel)="setFilteredItems()"
+                 (ionInput)="setFilteredItems()"></ion-searchbar>
 </ion-header>
 
+<ion-content class="background" padding>
 
-<ion-content padding>
+  <ion-list *ngIf="newspapers && newspapers.length > 0">
+    <newspaper-card *ngFor="let newspaper of newspapers"
+                    class="animated fadeInUp"
+                    [isFavorite]="favoritesProvider.isFavorite(newspaper)"
+                    [newspaper]="newspaper"
+                    (onClick)="onNewspaperClick(newspaper)"></newspaper-card>
+  </ion-list>
+
+  <ion-card *ngIf="newspapers && newspapers.length === 0" class="no-newspapers animated flipInX">
+    <ion-card-content>
+      <i class="fa fa-newspaper-o newspaper-icon" aria-hidden="true"></i>
+      <div>{{ searchMessage }}</div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

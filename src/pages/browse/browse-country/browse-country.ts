@@ -26,7 +26,7 @@ export class BrowseCountryPage {
   }
 
   onCountry(country) {
-    this.navCtrl.push('BrowseNewspapersPage', {country});
+    this.navCtrl.push('BrowseNewspapersPage', {region: this.region, country});
   }
 
   backToHomePage() {

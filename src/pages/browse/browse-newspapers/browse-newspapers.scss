@@ -1,3 +1,27 @@
 page-browse-newspapers {
 
+  .background {
+    background: linear-gradient(to bottom right, #2c3e50, #bdc3c7);
+  }
+
+  .search-bar {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  .no-newspapers {
+    text-align: center;
+    font-size: 12px;
+    padding: 7px;
+  }
+
+  .newspaper-icon {
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+
+}
+
+.toast-content {
+  text-align: center;
 }
