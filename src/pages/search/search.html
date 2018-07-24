@@ -8,17 +8,14 @@
                  (ionInput)="setFilteredItems()"></ion-searchbar>
 </ion-header>
 
-<ion-content class="background">
+<ion-content class="background" padding>
 
   <ion-list *ngIf="newspapers.length > 0">
-    <ion-card *ngFor="let newspaper of newspapers; let i = index;" class="animated fadeInUp">
-      <ion-item text-wrap>
-        <div class="newspaper-name">{{ newspaper.name }}</div>
-      </ion-item>
-      <ion-item text-wrap>
-        <div class="newspaper-country" item-right>{{ newspaper.region }}, {{ newspaper.country }}</div>
-      </ion-item>
-    </ion-card>
+    <newspaper-card *ngFor="let newspaper of newspapers"
+                    class="animated fadeInUp"
+                    [isFavorite]="false"
+                    [newspaper]="newspaper"
+                    (onClick)="onNewspaperClick(newspaper)"></newspaper-card>
   </ion-list>
 
   <ion-card *ngIf="newspapers.length === 0" class="no-newspapers animated flipInX">

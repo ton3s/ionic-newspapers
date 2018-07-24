@@ -1,7 +1,7 @@
 page-search {
 
   .background {
-    background: linear-gradient(to right, #4e54c8 , #8f94fb);
+    background: linear-gradient(to bottom right, #2c3e50, #bdc3c7);
   }
 
   .search-bar {
@@ -20,17 +20,4 @@ page-search {
     padding-bottom: 15px;
   }
 
-  .newspaper-name {
-    font-size: 14px;
-  }
-
-  .newspaper-country {
-    font-size: 10px;
-    font-style: italic;
-    color: #404040;
-  }
-
-  .item {
-    min-height: 0;
-  }
 }

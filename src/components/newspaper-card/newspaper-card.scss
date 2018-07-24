@@ -1,0 +1,18 @@
+newspaper-card {
+
+  display: block;
+
+  .newspaper-name {
+    font-size: 14px;
+  }
+
+  .newspaper-country {
+    font-size: 10px;
+    font-style: italic;
+    color: #404040;
+  }
+
+  .item {
+    min-height: 0;
+  }
+}

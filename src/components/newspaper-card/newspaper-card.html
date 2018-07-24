@@ -1,0 +1,9 @@
+<ion-card  (click)="onClick.emit(newspaper)">
+  <ion-item text-wrap>
+    <div class="newspaper-name">{{ newspaper.name }}</div>
+    <i class="fa fa-bookmark-o" item-end *ngIf="isFavorite"></i>
+  </ion-item>
+  <ion-item text-wrap>
+    <div class="newspaper-country" item-right>{{ newspaper.region }}, {{ newspaper.country }}</div>
+  </ion-item>
+</ion-card>
