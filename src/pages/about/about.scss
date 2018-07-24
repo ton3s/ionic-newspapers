@@ -1,0 +1,37 @@
+page-about {
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .card-background {
+    opacity: 1.0;
+  }
+
+  .background {
+    background: linear-gradient(to bottom right, #2980B9, #6DD5FA);
+  }
+
+  .profile-img {
+    width: 80%;
+  }
+
+  .profile-name {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .profile-url {
+    font-size: 18px;
+  }
+
+  .contact-info {
+    font-size: 12px;
+    color: #007bff;
+  }
+
+  .social-icon {
+    font-size: 22px;
+  }
+}

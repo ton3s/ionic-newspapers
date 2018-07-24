@@ -58,8 +58,8 @@ export class HomePage {
 
   loadFavorites() {
     this.favoritesProvider.getFavorites().then(newspapers => {
-      console.log(newspapers);
-      this.newspapers = newspapers
+      console.log(this.newspapers);
+      this.newspapers = newspapers;
     });
   }
 

@@ -13,6 +13,7 @@ import 'web-social-share';
 // Pages.
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
+import {TabsPage} from '../pages/tabs/tabs';
 
 // Providers.
 import {DataProvider} from '../providers/data/data.provider';
@@ -32,7 +33,8 @@ import {ComponentsModule} from "../components/components.module";
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {ComponentsModule} from "../components/components.module";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage
   ],
   providers: [
     StatusBar,

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {ActionSheetController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {ActionSheetController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {INewspaper} from "../../providers/data/data.interface";
 import {DataProvider} from "../../providers/data/data.provider";
 import {UtilityProvider} from "../../providers/utility/utility.provider";
 import {FavoritesProvider} from "../../providers/favorites/favorites.provider";
+import {TabsPage} from "../tabs/tabs";
 
 const SEARCH_MESSAGE = 'Please enter a search string of at least 4 characters';
 const SEARCH_NO_RESULTS = 'No Results Found';
@@ -29,6 +30,7 @@ export class SearchPage {
   }
 
   ionViewDidLoad() {
+    if (!this.navCtrl.canGoBack()) this.backToHomePage();
     setTimeout(() => this.setFilteredItems(), 350);
   }
 
@@ -71,6 +73,10 @@ export class SearchPage {
       ]
     });
     actionSheet.present();
+  }
+
+  backToHomePage() {
+    this.navCtrl.setRoot(TabsPage).then(() => this.navCtrl.popToRoot());
   }
 
 }
