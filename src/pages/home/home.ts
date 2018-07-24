@@ -29,7 +29,7 @@ export class HomePage {
         {
           text: 'Browse',
           handler: () => {
-            console.log('Browse clicked');
+            this.browse();
           }
         },{
           text: 'Search',
@@ -49,16 +49,15 @@ export class HomePage {
   }
 
   browse() {
-
+    this.navCtrl.push('BrowsePage');
   }
 
   search() {
-    this.navCtrl.push('SearchPage' );
+    this.navCtrl.push('SearchPage');
   }
 
   loadFavorites() {
     this.favoritesProvider.getFavorites().then(newspapers => {
-      console.log(this.newspapers);
       this.newspapers = newspapers;
     });
   }

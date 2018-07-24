@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Browse</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+
+  <ion-card *ngFor="let region of regions" (click)="onRegion(region)">
+    <button ion-item text-wrap>{{ region }}</button>
+  </ion-card>
+
+</ion-content>

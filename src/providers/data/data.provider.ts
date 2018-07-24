@@ -41,4 +41,28 @@ export class DataProvider {
         .catch(reject);
     })
   }
+
+  getRegions(): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+      this.getNewspapers()
+        .then((newspapers: INewspaper[]) => {
+          let regions = new Set();
+          newspapers.forEach(newspaper => regions.add(newspaper.region));
+          resolve(Array.from(regions));
+        }).catch(reject);
+    })
+  }
+
+  getCountriesForRegion(region: string): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+      this.getNewspapers()
+        .then((newspapers: INewspaper[]) => {
+          let countries = new Set();
+          newspapers
+            .filter(newspaper => newspaper.region === region)
+            .forEach(newspaper => countries.add(newspaper.country));
+          resolve(Array.from(countries));
+        }).catch(reject);
+    })
+  }
 }
