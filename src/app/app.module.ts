@@ -25,6 +25,8 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 
 // Firebase Configuration
 import {firebaseConfig} from './firebase.config';
+import { FavoritesProvider } from '../providers/favorites/favorites.provider';
+import {ComponentsModule} from "../components/components.module";
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import {firebaseConfig} from './firebase.config';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [IonicApp],
@@ -57,7 +60,8 @@ import {firebaseConfig} from './firebase.config';
     InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
-    UtilityProvider
+    UtilityProvider,
+    FavoritesProvider
   ]
 })
 export class AppModule {

@@ -13,7 +13,7 @@
   <ion-list *ngIf="newspapers.length > 0">
     <newspaper-card *ngFor="let newspaper of newspapers"
                     class="animated fadeInUp"
-                    [isFavorite]="false"
+                    [isFavorite]="favoritesProvider.isFavorite(newspaper)"
                     [newspaper]="newspaper"
                     (onClick)="onNewspaperClick(newspaper)"></newspaper-card>
   </ion-list>

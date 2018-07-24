@@ -3,6 +3,7 @@ import {ActionSheetController, IonicPage, NavController, NavParams, ToastControl
 import {INewspaper} from "../../providers/data/data.interface";
 import {DataProvider} from "../../providers/data/data.provider";
 import {UtilityProvider} from "../../providers/utility/utility.provider";
+import {FavoritesProvider} from "../../providers/favorites/favorites.provider";
 
 const SEARCH_MESSAGE = 'Please enter a search string of at least 4 characters';
 const SEARCH_NO_RESULTS = 'No Results Found';
@@ -21,10 +22,10 @@ export class SearchPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public toastCtrl: ToastController,
               public actionSheetCtrl: ActionSheetController,
               public dataProvider: DataProvider,
-              public utilityProvider: UtilityProvider) {
+              public utilityProvider: UtilityProvider,
+              public favoritesProvider: FavoritesProvider) {
   }
 
   ionViewDidLoad() {
@@ -44,16 +45,6 @@ export class SearchPage {
       });
   }
 
-  presentToast(message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 1500,
-      position: 'middle',
-      cssClass: 'toast-content'
-    });
-    toast.present();
-  }
-
   onNewspaperClick(newspaper: INewspaper) {
     const actionSheet = this.actionSheetCtrl.create({
       title: newspaper.name,
@@ -67,7 +58,8 @@ export class SearchPage {
         {
           text: 'Save',
           handler: () => {
-            console.log('Save clicked');
+            this.favoritesProvider.saveFavorite(newspaper)
+              .then(_ => this.utilityProvider.presentToast("Saved Newspaper"))
           }
         },{
           text: 'Cancel',

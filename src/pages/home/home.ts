@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {ActionSheetController, NavController} from 'ionic-angular';
-import {DataProvider} from "../../providers/data/data.provider";
 import {INewspaper} from "../../providers/data/data.interface";
+import {FavoritesProvider} from "../../providers/favorites/favorites.provider";
+import {UtilityProvider} from "../../providers/utility/utility.provider";
 
 @Component({
   selector: 'page-home',
@@ -13,10 +14,12 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
               public actionSheetCtrl: ActionSheetController,
-              public dataProvider: DataProvider) {
+              public favoritesProvider: FavoritesProvider,
+              public utilityProvider: UtilityProvider) {
   }
 
   ionViewDidLoad() {
+    this.loadFavorites();
   }
 
   addNewspaper() {
@@ -53,8 +56,42 @@ export class HomePage {
     this.navCtrl.push('SearchPage' );
   }
 
-  loadNewspapers() {
-    this.dataProvider.getNewspapers().then(newspapers => this.newspapers = newspapers);
+  loadFavorites() {
+    this.favoritesProvider.getFavorites().then(newspapers => {
+      console.log(newspapers);
+      this.newspapers = newspapers
+    });
+  }
+
+  onNewspaperClick(newspaper: INewspaper) {
+    const actionSheet = this.actionSheetCtrl.create({
+      title: newspaper.name,
+      buttons: [
+        {
+          text: 'View',
+          handler: () => {
+            this.utilityProvider.openBrowser(newspaper.url);
+          }
+        },
+        {
+          text: 'Remove',
+          handler: () => {
+            this.favoritesProvider.removeFavorite(newspaper)
+              .then(_ => {
+                this.loadFavorites();
+                this.utilityProvider.presentToast("Removed Newspaper");
+              })
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }

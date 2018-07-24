@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Loading, LoadingController, Platform} from "ionic-angular";
+import {Loading, LoadingController, Platform, ToastController} from "ionic-angular";
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 
 @Injectable()
@@ -10,6 +10,7 @@ export class UtilityProvider {
 
   constructor(public http: HttpClient,
               public loadingCtrl: LoadingController,
+              public toastCtrl: ToastController,
               public platform: Platform,
               public inAppBrowser: InAppBrowser) {
   }
@@ -39,6 +40,16 @@ export class UtilityProvider {
     if (this.platform.is('cordova')) {
       inAppBrowserRef.on('exit').subscribe(() => callback());
     }
+  }
+
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 1500,
+      position: 'middle',
+      cssClass: 'toast-content'
+    });
+    toast.present();
   }
 
 }

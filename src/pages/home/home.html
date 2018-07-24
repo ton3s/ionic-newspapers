@@ -13,16 +13,25 @@
 
 <ion-content padding class="background">
 
-  <ion-card class="no-newspapers">
-    <ion-card-content>
-      <i class="fa fa-newspaper-o newspaper-icon" aria-hidden="true"></i>
-      <div>No Newspapers Saved</div>
-    </ion-card-content>
-  </ion-card>
+  <ion-list>
+    <div *ngIf="newspapers && newspapers.length > 0">
+      <newspaper-card *ngFor="let newspaper of newspapers"
+                      class="animated flipInX"
+                      [isFavorite]="favoritesProvider.isFavorite(newspaper)"
+                      [newspaper]="newspaper"
+                      (onClick)="onNewspaperClick(newspaper)"></newspaper-card>
+    </div>
 
-  <ion-card (click)="addNewspaper()" class="add-newspaper">
-    <ion-icon class="add-newspaper-icon add-newspaper-color" name="add-circle-outline"></ion-icon>
-    <div class="add-newspaper-color">Add Newspaper</div>
-  </ion-card>
+    <ion-card class="no-newspapers animated flipInX" *ngIf="newspapers && newspapers.length === 0">
+      <ion-card-content>
+        <i class="fa fa-newspaper-o newspaper-icon" aria-hidden="true"></i>
+        <div>No Newspapers Saved</div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card (click)="addNewspaper()" class="add-newspaper">
+      <ion-icon class="add-newspaper-icon add-newspaper-color" name="add-circle-outline"></ion-icon>
+      <div class="add-newspaper-color">Add Newspaper</div>
+    </ion-card>
+  </ion-list>
 
 </ion-content>
