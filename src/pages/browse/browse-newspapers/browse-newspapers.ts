@@ -52,7 +52,7 @@ export class BrowseNewspapersPage {
         {
           text: 'View',
           handler: () => {
-            console.log('View clicked');
+            this.utilityProvider.openBrowser(newspaper.url);
           }
         },
         {

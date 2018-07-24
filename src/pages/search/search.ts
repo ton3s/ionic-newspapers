@@ -54,7 +54,7 @@ export class SearchPage {
         {
           text: 'View',
           handler: () => {
-            console.log('View clicked');
+            this.utilityProvider.openBrowser(newspaper.url);
           }
         },
         {
