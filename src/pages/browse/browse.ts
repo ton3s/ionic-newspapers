@@ -10,7 +10,7 @@ import {TabsPage} from "../tabs/tabs";
 })
 export class BrowsePage {
 
-  regions: string[];
+  regions: string[] = [];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
