@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActionSheetController, NavController} from 'ionic-angular';
 import {INewspaper} from "../../providers/data/data.interface";
 import {FavoritesProvider} from "../../providers/favorites/favorites.provider";
@@ -10,7 +10,8 @@ import {UtilityProvider} from "../../providers/utility/utility.provider";
 })
 export class HomePage {
 
-  newspapers: INewspaper[];
+  newspapers: INewspaper[] = [];
+  isFavoritesLoaded: boolean = false;
 
   constructor(public navCtrl: NavController,
               public actionSheetCtrl: ActionSheetController,
@@ -31,12 +32,12 @@ export class HomePage {
           handler: () => {
             this.browse();
           }
-        },{
+        }, {
           text: 'Search',
           handler: () => {
             this.search();
           }
-        },{
+        }, {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
@@ -59,6 +60,7 @@ export class HomePage {
   loadFavorites() {
     this.favoritesProvider.getFavorites().then(newspapers => {
       this.newspapers = newspapers;
+      this.isFavoritesLoaded = true;
     });
   }
 
@@ -81,7 +83,7 @@ export class HomePage {
                 this.utilityProvider.presentToast("Removed Newspaper");
               })
           }
-        },{
+        }, {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
