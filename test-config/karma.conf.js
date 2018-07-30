@@ -49,7 +49,11 @@ module.exports = function(config) {
       fixWebpackSourcePaths: true
     },
 
-    reporters: config.coverage ? ['kjhtml', 'dots', 'coverage-istanbul'] : ['kjhtml', 'dots'],
+    client:{
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+
+    reporters: config.coverage ? ['progress', 'kjhtml', 'dots', 'coverage-istanbul'] : ['progress', 'kjhtml', 'dots'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

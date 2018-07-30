@@ -16,7 +16,6 @@ const SEARCH_NO_RESULTS = 'No Results Found';
 })
 export class SearchPage {
 
-
   searchTerm: string = '';
   searchMessage: string = SEARCH_MESSAGE;
   newspapers: INewspaper[] = [];
