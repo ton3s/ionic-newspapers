@@ -5,6 +5,7 @@
 ## Features
 * Search, save and  view over 13000+ newspapers from all over the world.
 * Uses local storage so your data is never shared with the public.
+* Unit tests with [Karma](https://karma-runner.github.io/2.0/index.html) and [Jasmine](https://jasmine.github.io/).
 * Deployed securely using [Google firebase hosting](https://firebase.google.com/products/hosting/).
 * Animations by [Animate.css](https://daneden.github.io/animate.css/).
 * Developed in [Typescript](https://www.typescriptlang.org/) using [Angular](https://angular.io/) & [Ionic 3](https://ionicframework.com/docs/) frameworks.
