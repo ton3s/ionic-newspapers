@@ -10,8 +10,8 @@ import {DataProvider} from "../../../providers/data/data.provider";
 })
 export class BrowseCountryPage {
 
-  region: string;
-  countries: string[];
+  region: string = '';
+  countries: string[] = [];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
