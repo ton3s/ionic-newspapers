@@ -19,7 +19,8 @@ export class BrowseNewspapersPage {
   country: string = '';
   searchTerm: string = '';
   searchMessage: string = SEARCH_NO_RESULTS;
-  newspapers: INewspaper[];
+  newspapers: INewspaper[] = [];
+  isLoaded: boolean = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,12 +28,12 @@ export class BrowseNewspapersPage {
               public dataProvider: DataProvider,
               public utilityProvider: UtilityProvider,
               public favoritesProvider: FavoritesProvider) {
-
-    this.region = this.navParams.get('region');
-    this.country = this.navParams.get('country');
   }
 
   ionViewDidLoad() {
+    this.region = this.navParams.get('region');
+    this.country = this.navParams.get('country');
+
     if (!this.navCtrl.canGoBack()) this.backToHomePage();
     setTimeout(() => this.setFilteredItems(), 350);
   }
@@ -41,6 +42,7 @@ export class BrowseNewspapersPage {
     this.dataProvider.filterNewspapersForCountry(this.region, this.country, this.searchTerm)
       .then((newspapers: INewspaper[]) => {
         this.newspapers = newspapers;
+        this.isLoaded = true;
         if (this.newspapers.length === 0) this.searchMessage = SEARCH_NO_RESULTS;
       });
   }

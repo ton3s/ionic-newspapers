@@ -10,7 +10,7 @@
 
 <ion-content class="background" padding>
 
-  <ion-list *ngIf="newspapers && newspapers.length > 0">
+  <ion-list *ngIf="isLoaded && newspapers.length > 0">
     <newspaper-card *ngFor="let newspaper of newspapers"
                     class="animated fadeInUp"
                     [isFavorite]="favoritesProvider.isFavorite(newspaper)"
@@ -18,7 +18,7 @@
                     (onClick)="onNewspaperClick(newspaper)"></newspaper-card>
   </ion-list>
 
-  <ion-card *ngIf="newspapers && newspapers.length === 0" class="no-newspapers animated flipInX">
+  <ion-card *ngIf="isLoaded && newspapers.length === 0" class="no-newspapers animated flipInX">
     <ion-card-content>
       <i class="fa fa-newspaper-o newspaper-icon" aria-hidden="true"></i>
       <div>{{ searchMessage }}</div>

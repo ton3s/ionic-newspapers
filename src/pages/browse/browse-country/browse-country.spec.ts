@@ -59,6 +59,11 @@ describe('Browse Country Page', () => {
     expect(comp.countries instanceof Array).toBe(true);
   });
 
+  it('should populate region from NavParams when ionViewDidLoad() is called', () => {
+    comp.ionViewDidLoad();
+    expect(navParams.get).toHaveBeenCalledWith("region");
+  });
+
   it('should populate countries array when ionViewDidLoad() is called', fakeAsync(() => {
     comp.ionViewDidLoad();
     tick();

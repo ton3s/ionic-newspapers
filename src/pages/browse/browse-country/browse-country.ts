@@ -16,11 +16,11 @@ export class BrowseCountryPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public dataProvider: DataProvider) {
-
-    this.region = this.navParams.get('region');
   }
 
   ionViewDidLoad() {
+    this.region = this.navParams.get('region');
+
     if (!this.navCtrl.canGoBack()) this.backToHomePage();
     this.dataProvider.getCountriesForRegion(this.region).then(countries => this.countries = countries);
   }
